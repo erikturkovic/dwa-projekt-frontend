@@ -1,6 +1,14 @@
 <template>
   <div class="about">
-    <h1>This is an login page</h1>
+    <h1>Login</h1>
+    <form class="container-fluid justify-content-start">
+      <button class="btn btn-outline-success me-2" type="button">
+        Student
+      </button>
+      <button class="btn btn-outline-success me-2" type="button">
+        Poslodavac
+      </button>
+    </form>
     <div class="container">
       <div class="row">
         <div class="col-sm"></div>
@@ -13,12 +21,26 @@
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
-                placeholder="Enter
-email"
+                placeholder="Enter email"
               />
-              <small id="emailHelp" class="form-text text-muted"
-                >We'll never share your email with anyone else.</small
-              >
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Ime</label>
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Prezime</label>
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+              />
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>

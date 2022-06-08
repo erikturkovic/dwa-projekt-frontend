@@ -2,9 +2,9 @@
   <div id="app">
     <nav id="nav" class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="#">
-          <div class="container-fluid">
-    <a class="navbar-brand" href="#">Praksomat</a>
-  </div>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Praksomat</a>
+        </div>
       </a>
       <button
         class="navbar-toggler"
@@ -20,7 +20,13 @@
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <router-link to="/" class="nav-link">Home</router-link>
+            <router-link to="/" class="nav-link">Ponude</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/ponude" class="nav-link">MojePonude</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/profil" class="nav-link">Profil</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/login" class="nav-link">Login</router-link>
@@ -28,9 +34,7 @@
           <li class="nav-item">
             <router-link to="/register" class="nav-link">Register</router-link>
           </li>
-          <li class="nav-item">
-            <router-link to="/profil" class="nav-link">Profil</router-link>
-          </li>
+
         </ul>
       </div>
     </nav>

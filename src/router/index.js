@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/Ponude.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'ponude',
     component: HomeView
   },
   {
@@ -21,11 +21,16 @@ const routes = [
   {
     path: '/register',
     name: 'Register',
-    component: HomeView
+    component: () => import(/* webpackChunkName: "about" */ '../views/Register.vue')
   },
   {
     path: '/profil',
     name: 'Profil',
+    component: HomeView
+  },
+  {
+    path: '/ponude',
+    name: 'MojePonude',
     component: HomeView
   },
 ]
