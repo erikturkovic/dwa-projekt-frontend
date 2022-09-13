@@ -1,3 +1,4 @@
+
 <template>
   <div id="app">
     <nav id="nav" class="navbar navbar-expand-lg navbar-light">
@@ -23,9 +24,6 @@
             <router-link to="/" class="nav-link">Ponude</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/ponude" class="nav-link">MojePonude</router-link>
-          </li>
-          <li class="nav-item">
             <router-link to="/profil" class="nav-link">Profil</router-link>
           </li>
           <li class="nav-item">
@@ -43,6 +41,7 @@
     </div>
   </div>
 </template>
+
 
 <style lang="scss">
 #app {

@@ -28,11 +28,6 @@ const routes = [
     name: 'Profil',
     component: HomeView
   },
-  {
-    path: '/ponude',
-    name: 'MojePonude',
-    component: HomeView
-  },
 ]
 
 const router = new VueRouter({
