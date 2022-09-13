@@ -2,10 +2,12 @@
   <div class="about">
     <h1>Login</h1>
     <form class="container-fluid justify-content-start">
-      <div>Selected: {{ selected }}</div>
+      <div>Ja sam: {{ selected }}</div>
 
       <select v-model="vrsta">
-        <option disabled value="">Odaberite "Student" ili "Poslodavac"</option>
+        <option disabled value="Student">
+          Odaberite "Student" ili "Poslodavac"
+        </option>
         <option>Student</option>
         <option>Poslodavac</option>
       </select>
@@ -22,7 +24,7 @@
                 class="form-control"
                 id="InputEmail1"
                 aria-describedby="emailHelp"
-                placeholder="Enter email"
+                placeholder="Upiši email"
                 v-model="email"
               />
             </div>
@@ -69,6 +71,7 @@
 
 <script>
 import axios from "axios";
+import Vue from "vue";
 
 export default {
   name: "Register",
@@ -92,7 +95,7 @@ export default {
           vrsta: this.vrsta,
         };
         console.log(student);
-        axios.post('http://localhost:3000/studenti', student)
+        axios.post("http://localhost:3000/studenti", student);
       } else {
         let poslodavac = {
           email: this.email,
@@ -102,7 +105,7 @@ export default {
           vrsta: this.vrsta,
         };
         console.log(poslodavac);
-        axios.post('http://localhost:3000/poslodavci', poslodavac)
+        axios.post("http://localhost:3000/poslodavci", poslodavac);
       }
     },
   },

@@ -1,7 +1,7 @@
 
 <template>
   <div id="app">
-    <nav id="nav" class="navbar navbar-expand-lg navbar-light">
+    <nav id="nav" class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Praksomat</a>
