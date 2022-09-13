@@ -2,13 +2,13 @@
   <div class="about">
     <h1>Login</h1>
     <form class="container-fluid justify-content-start">
-<div>Selected: {{ selected }}</div>
+      <div>Selected: {{ selected }}</div>
 
-<select v-model="vrsta">
-  <option disabled value="">Odaberite "Student" ili "Poslodavac"</option>
-  <option>Student</option>
-  <option>Poslodavac</option>
-</select>
+      <select v-model="vrsta">
+        <option disabled value="">Odaberite "Student" ili "Poslodavac"</option>
+        <option>Student</option>
+        <option>Poslodavac</option>
+      </select>
     </form>
     <div class="container">
       <div class="row">
@@ -56,7 +56,9 @@
                 v-model="password"
               />
             </div>
-            <button @click="register" type="submit" class="btn btn-primary">Submit</button>
+            <button @click="register" type="submit" class="btn btn-primary">
+              Submit
+            </button>
           </form>
         </div>
         <div class="col-sm"></div>
@@ -66,28 +68,43 @@
 </template>
 
 <script>
-export default{
-  name:'Register',
-  data(){
-    return{
-      email:'',
-      ime:'',
-      prezime:'',
-      password:'',
-      vrsta:'',
+import axios from "axios";
 
-
-    }
+export default {
+  name: "Register",
+  data() {
+    return {
+      email: "",
+      ime: "",
+      prezime: "",
+      password: "",
+      vrsta: "",
+    };
   },
-  methods:{
-    register(){
-      console.log(this.email);
-      console.log(this.ime);
-      console.log(this.prezime);
-      console.log(this.password);
-      console.log(this.vrsta)
+  methods: {
+    register() {
+      if (this.vrsta == "Student") {
+        let student = {
+          email: this.email,
+          ime: this.ime,
+          prezime: this.prezime,
+          password: this.password,
+          vrsta: this.vrsta,
+        };
+        console.log(student);
+        axios.post('http://localhost:3000/studenti', student)
+      } else {
+        let poslodavac = {
+          email: this.email,
+          ime: this.ime,
+          prezime: this.prezime,
+          password: this.password,
+          vrsta: this.vrsta,
+        };
+        console.log(poslodavac);
+        axios.post('http://localhost:3000/poslodavci', poslodavac)
+      }
     },
-
-  }
-}
+  },
+};
 </script>
