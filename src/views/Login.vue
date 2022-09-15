@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm">
-          <form>
+          <form @submit.prevent="login">
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input
@@ -14,6 +14,7 @@
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                v-model="email"
               />
             </div>
             <div class="form-group">
@@ -23,6 +24,7 @@
                 class="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
+                v-model="password"
               />
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -33,3 +35,27 @@
     </div>
   </div>
 </template>
+
+<script>
+import { Auth } from "@/services";
+
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    async login() {
+      let succ = await Auth.login(this.email, this.password);
+      console.log("Prijava: ", succ);
+
+      if (succ == true) {
+        this.$router.push({ name: "ponude" });
+        this.$router.go();
+      }
+    },
+  },
+};
+</script>

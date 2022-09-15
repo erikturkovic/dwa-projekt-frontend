@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/Ponude.vue'
+import {Auth} from '@/services'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,18 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next)=>{
+  const javneStranice = ["/login","/register"];
+  const loginTreba = !javneStranice.includes(to.path);
+  const korisnikData = Auth.getkorisnikData();
+
+  if (loginTreba && !korisnikData){
+    next('/login');
+    return;
+  }
+  next();
 })
 
 export default router

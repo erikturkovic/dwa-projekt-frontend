@@ -1,4 +1,3 @@
-
 <template>
   <div id="app">
     <nav id="nav" class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,13 +25,15 @@
           <li class="nav-item">
             <router-link to="/profil" class="nav-link">Profil</router-link>
           </li>
-          <li class="nav-item">
+          <li v-if="!authenticated">
             <router-link to="/login" class="nav-link">Login</router-link>
           </li>
-          <li class="nav-item">
+          <li v-if="!authenticated">
             <router-link to="/register" class="nav-link">Register</router-link>
           </li>
-
+          <li v-if="authenticated">
+            <a href="#" @click.prevent="logout()" class="nav-link">Logout</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -42,6 +43,28 @@
   </div>
 </template>
 
+<script>
+import {Auth} from '@/services';
+import axios from "axios";
+import Vue from "vue";
+
+export default{
+
+  data(){
+    return{
+      ...Auth.state,
+    }
+
+  },
+  methods:{
+    logout(){
+      Auth.logout();
+      this.$router.go();
+    }
+  }
+
+}
+</script>
 
 <style lang="scss">
 #app {

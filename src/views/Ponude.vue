@@ -40,7 +40,6 @@
       </div>
       <div class="card-body p-2"></div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -50,7 +49,6 @@ import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "HomeView",
   components: {
-    HelloWorld,
   },
 };
 </script>
