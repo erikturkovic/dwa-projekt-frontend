@@ -25,13 +25,13 @@
           <li class="nav-item">
             <router-link to="/profil" class="nav-link">Profil</router-link>
           </li>
-          <li v-if="!authenticated">
+          <li v-if="!authenticated" class="nav-item">
             <router-link to="/login" class="nav-link">Login</router-link>
           </li>
-          <li v-if="!authenticated">
+          <li v-if="!authenticated" class="nav-item">
             <router-link to="/register" class="nav-link">Register</router-link>
           </li>
-          <li v-if="authenticated">
+          <li v-if="authenticated" class="nav-item">
             <a href="#" @click.prevent="logout()" class="nav-link">Logout</a>
           </li>
         </ul>
