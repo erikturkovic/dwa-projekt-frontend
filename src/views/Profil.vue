@@ -1,15 +1,17 @@
 <template>
+<cardProfileS/>
 </template>
 
 <script>
 import { Auth } from "@/services";
-
+import cardProfileS from '@/components/cardProfileS.vue';
+import axios from "axios";
+ 
 export default {
-  data() {
-   
-  },
-  methods: {
-   
-  },
+name:"Profil",
+components:{
+cardProfileS
+},
+
 };
 </script>

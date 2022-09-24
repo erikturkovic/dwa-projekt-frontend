@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <router-link to="/" class="nav-link">Ponude</router-link>
+            <router-link to="/ponude" class="nav-link">Ponude</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/profil" class="nav-link">Profil</router-link>

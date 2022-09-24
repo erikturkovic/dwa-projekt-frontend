@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="register">
     <h1>Register</h1>
     <div class="container">
       <div class="row">
@@ -53,6 +53,7 @@
 import axios from "axios";
 import Vue from "vue";
 import {Auth} from "@/services";
+import baseURL from "@/services"
 
 export default {
   name: "Register",
