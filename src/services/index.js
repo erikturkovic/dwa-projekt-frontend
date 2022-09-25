@@ -3,7 +3,7 @@ import $router from "@/router";
 import cardProfileS from "@/components/cardProfileS.vue";
 import cardProfileP from "@/components/cardProfileP.vue";
 
-let Service = axios.create({
+const Service = axios.create({
   baseURL: "http://localhost:3000",
   timeout: 1000,
 });

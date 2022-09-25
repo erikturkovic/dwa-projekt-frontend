@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav id="nav" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav id="nav" class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
       <a class="navbar-brand" href="#">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Praksomat</a>

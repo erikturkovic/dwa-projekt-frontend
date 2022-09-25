@@ -6,6 +6,7 @@
         <div class="col-sm"></div>
         <div class="col-sm">
           <form>
+            <h3>Osnovni podaci</h3>
             <div class="form-floating mb-4">
               <input
                 type="email"
