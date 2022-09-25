@@ -19,10 +19,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item">
+          <li v-if="authenticated" class="nav-item">
             <router-link to="/ponude" class="nav-link">Ponude</router-link>
           </li>
-          <li class="nav-item">
+          <li v-if="authenticated" class="nav-item">
             <router-link to="/profil" class="nav-link">Profil</router-link>
           </li>
           <li v-if="!authenticated" class="nav-item">
@@ -44,26 +44,23 @@
 </template>
 
 <script>
-import {Auth} from '@/services';
+import { Auth } from "@/services";
 import axios from "axios";
 import Vue from "vue";
 
-export default{
-
-  data(){
-    return{
+export default {
+  data() {
+    return {
       ...Auth.state,
-    }
-
+    };
   },
-  methods:{
-    logout(){
+  methods: {
+    logout() {
       Auth.logout();
       this.$router.go();
-    }
+    },
   },
-
-}
+};
 </script>
 
 <style lang="scss">

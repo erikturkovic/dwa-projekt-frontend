@@ -62,10 +62,21 @@ let Auth = {
     return false;
   },
 
+  provjeren() {
+    let korisnikData = Auth.getkorisnikData();
+    if (korisnikData.vrsta == "Student") {
+      return true;
+    }
+    return false;
+  },
+
   state: {
     get authenticated() {
       return Auth.authenticated();
     },
+    get provjeren(){
+      return Auth.provjeren();
+    }
   },
 };
 

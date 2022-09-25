@@ -68,7 +68,13 @@
             <p></p>
           </div>
           <div class="form-floating mb-4">
-            <button type="submit" class="btn btn-primary">Unesi podatke</button>
+            <button
+              @click="unesiPodatkePoslodavca"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Unesi podatke
+            </button>
           </div>
         </div>
         <div class="col-sm"></div>
@@ -80,7 +86,6 @@
 <script>
 import { Auth } from "@/services";
 import axios from "axios";
-
 
 export default {
   data() {
@@ -107,6 +112,5 @@ export default {
       axios.post("http://localhost:3000/detaljiPoslodavca", detaljiPoslodavca);
     },
   },
-
 };
 </script>
