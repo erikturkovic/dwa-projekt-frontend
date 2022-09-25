@@ -10,7 +10,7 @@
           <cardProfileP />
         </div>
         <div class="col-sm" v-if="!provjeren">
-          <cardPonuda />
+          <cardObjavaPonude />
         </div>
       </div>
     </div>
@@ -22,7 +22,8 @@ import { Auth } from "@/services";
 import axios from "axios";
 import cardProfileS from "@/components/cardProfileS.vue";
 import cardProfileP from "@/components/cardProfileP.vue";
-import cardPonuda from '@/components/cardPonuda.vue';
+import cardObjavaPonude from "@/components/cardObjavaPonude.vue";
+import cardPodaciP from "@/components/cardPodaciP.vue";
 
 export default {
   data() {
@@ -37,11 +38,10 @@ export default {
   components: {
     cardProfileP,
     cardProfileS,
-    cardPonuda,
+    cardObjavaPonude,
+    cardPodaciP,
   },
   methods: {},
-  mounted() {
-    0;
-  },
+  mounted() {},
 };
 </script>

@@ -2,106 +2,69 @@
   <div class="card text-bg-dark mb-3" style="width: 18rem">
     <div class="card-body">
       <h5 class="card-title">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Ime prakse"
-          aria-label="default input example"
-          v-model="imePrakse"
-        />
+        <h5 class="card-title">Ime</h5>
       </h5>
-      <p class="card-text">
-        <textarea
-          class="form-control"
-          placeholder="Kratak opis"
-          id="exampleFormControlTextarea1"
-          rows="3"
-          v-model="kratkiOpisPO"
-        ></textarea>
-      </p>
+      <p class="card-text"></p>
+      <p class="card-text">Opissssssssssssssss</p>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        <form class="container-fluid justify-content-start">
-          <select v-model="placeno">
-            <option disabled value="null"></option>
-            <option>Plaćeno: Da</option>
-            <option>Plaćeno: Ne</option>
-          </select>
-        </form>
-        <input
-          class="form-control"
-          type="text"
-          placeholder="kn/hr"
-          aria-label="default input example"
-          v-model="knhr"
-        />
+        <h5 class="card-title">plaćeno</h5>
       </li>
       <li class="list-group-item">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Mjesto"
-          aria-label="default input example"
-          v-model="mjesto"
-        />
+        <h5 class="card-title">Mjesto</h5>
       </li>
       <li class="list-group-item">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Tvrtka"
-          aria-label="default input example"
-          v-model="tvrtka"
-        />
+        <h5 class="card-title">Tvrtka</h5>
       </li>
-      <textarea
-        class="form-control"
-        placeholder="Detaljniji opis"
-        id="exampleFormControlTextarea1"
-        rows="3"
-        v-model="detaljniOpis"
-      ></textarea>
     </ul>
     <div class="card-body">
-      <a href="#" @click="objaviPonudu" class="card-link">Objavi</a>
+      <button type="submit" class="btn btn-primary">Provjeri</button>
     </div>
   </div>
 </template>
 
 <script>
-
 import axios from "axios";
-import {Service} from "@/services"
+import { Service } from "@/services";
 
 export default {
   data() {
     return {
-      email:"",
+      email: "",
       imePrakse: "",
       kratkiOpisPO: "",
-      placeno:"",
-      knhr:"",
+      placeno: "",
+      knhr: "",
       mjesto: "",
       tvrtka: "",
       detaljniOpis: "",
+      ponude: [],
     };
   },
-    methods: {
-    objaviPonudu() {
-      let uservrsta = JSON.parse(localStorage.getItem("korisnikData"));
-      let detaljiPonuda = {
-        email: uservrsta.email,
-        imePrakse: this.imePrakse,
-        kratkiOpisPO: this.kratkiOpisPO,
-        placeno:this.placeno,
-        knhr:this.knhr,
-        mjesto: this.mjesto,
-        tvrtka: this.tvrtka,
-        detaljniOpis: this.detaljniOpis,
-      };
-      axios.post("http://localhost:3000/detaljiPonuda", detaljiPonuda);
-    },
-}
-}
+  methods: {},
+  async mounted() {
+    let rezultat = await fetch("http://localhost:3000/detaljiPonuda")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+
+        let data2 = data.map((element) => {
+          return {
+            email: element.objavio,
+            objavljeno: element.objavljeno,
+            imePrakse: element.imePrakse,
+            kratkiOpisPO: element.kratkiOpisPO,
+            placeno: element.placeno,
+            knhr: element.knhr,
+            mjesto: element.mjesto,
+            tvrtka: element.tvrtka,
+            detaljniOpis: element.detaljniOpis,
+          };
+        });
+      });
+  },
+};
 </script>

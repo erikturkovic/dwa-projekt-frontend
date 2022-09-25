@@ -70,6 +70,7 @@ let Auth = {
     return false;
   },
 
+
   state: {
     get authenticated() {
       return Auth.authenticated();

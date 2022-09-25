@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="card bg-secondary">
     <p></p>
     <div class="container">
       <div class="row">
@@ -9,67 +9,167 @@
             <h3>Osnovni podaci</h3>
             <div class="form-floating mb-4">
               <input
-                type="email"
-                readonly
+                v-if="podatki[0]"
                 class="form-control"
-                id="floatingPlaintextInput"
+                type="email"
+                value="Readonly input here..."
+                aria-label="readonly input example"
+                readonly
+                v-model="podatki[0].email"
+              />
+              <p></p>
+              <input
+                v-if="podatki[0]"
+                class="form-control"
+                type="text"
+                value="Readonly input here..."
+                aria-label="readonly input example"
+                readonly
+                v-model="podatki[0].vrsta"
+              />
+              <input
+                v-if="!podatki[0]"
+                class="form-control"
+                type="text"
+                value=""
+                aria-label="Disabled input example"
+                disabled
+                readonly
                 v-model="email"
               />
-              <label for="floatingPlaintextInput">E-mail : </label>
+              <label v-if="!podatki[0]" for="floatingPlaintextInput"
+                >E-mail :
+              </label>
             </div>
             <div class="form-floating mb-4">
               <input
+                v-if="!podatki[0]"
                 type="vrsta"
                 readonly
                 class="form-control"
                 id="floatingPlaintextInput"
                 v-model="vrsta"
               />
-              <label for="floatingPlaintextInput">Ja sam : </label>
+              <label v-if="!podatki[0]" for="floatingPlaintextInput"
+                >Ja sam :
+              </label>
             </div>
           </form>
           <h3>Detalji profila</h3>
           <p></p>
           <div class="form-floating mb-4">
             <input
+              v-if="podatki[0]"
+              class="form-control"
+              type="email"
+              value="Readonly input here..."
+              aria-label="readonly input example"
+              v-model="podatki[0].ime"
+            />
+            <button
+              v-if="podatki[0]"
+              type="button"
+              class="btn btn-success btn-sm"
+            >
+              Update
+            </button>
+            <p></p>
+            <input
+              v-if="podatki[0]"
+              class="form-control"
+              type="email"
+              value="Readonly input here..."
+              aria-label="readonly input example"
+              v-model="podatki[0].prezime"
+            />
+            <button
+              v-if="podatki[0]"
+              type="button"
+              class="btn btn-success btn-sm"
+            >
+              Small button
+            </button>
+            <p></p>
+            <input
+              v-if="podatki[0]"
+              class="form-control"
+              type="email"
+              value="Readonly input here..."
+              aria-label="readonly input example"
+              v-model="podatki[0].radimU"
+            />
+            <button v-if="podatki[0]" type="button" class="btn btn-success btn-sm">
+              Small button
+            </button>
+            <p></p>
+            <input
+              v-if="podatki[0]"
+              class="form-control"
+              type="email"
+              value="Readonly input here..."
+              aria-label="readonly input example"
+              v-model="podatki[0].kratkiOpisP"
+            />
+            <button
+              v-if="podatki[0]"
+              type="button"
+              class="btn btn-success btn-sm"
+            >
+              Small button
+            </button>
+            <p></p>
+            <input
+              v-if="!podatki[0]"
               type="ime"
               class="form-control"
               id="floatingPlaintextInput"
               v-model="ime"
             />
-            <label for="floatingPlaintextInput">Ime : </label>
+            <label v-if="!podatki[0]" for="floatingPlaintextInput"
+              >Ime :
+            </label>
           </div>
           <div class="form-floating mb-4">
             <input
+              v-if="!podatki[0]"
               type="prezime"
               class="form-control"
               id="floatingPlaintextInput"
               v-model="prezime"
             />
-            <label for="floatingPlaintextInput">Prezime : </label>
+            <label v-if="!podatki[0]" for="floatingPlaintextInput"
+              >Prezime :
+            </label>
           </div>
           <div class="form-floating mb-4">
             <input
+              v-if="!podatki[0]"
               type="prezime"
               class="form-control"
               id="floatingPlaintextInput"
               v-model="radimU"
             />
-            <label for="floatingPlaintextInput">Radim u : </label>
+            <label v-if="!podatki[0]" for="floatingPlaintextInput"
+              >Radim u :
+            </label>
           </div>
           <div class="form-floating">
             <textarea
+              v-if="!podatki[0]"
               class="form-control"
               placeholder="Leave a comment here"
               id="floatingTextarea2"
               style="height: 100px"
               v-model="kratkiOpisP"
             ></textarea>
-            <label for="floatingTextarea2">Kratki opis : </label>
+            <label v-if="!podatki[0]" for="floatingTextarea2"
+              >Kratki opis :
+            </label>
             <p></p>
           </div>
           <div class="form-floating mb-4">
             <button
+              v-if="!podatki[0]"
               @click="unesiPodatkePoslodavca"
               type="submit"
               class="btn btn-primary"
@@ -97,6 +197,8 @@ export default {
       prezime: "",
       radimU: "",
       kratkiOpisP: "",
+      podatki: [],
+      imaPodatke: "",
     };
   },
   methods: {
@@ -111,7 +213,21 @@ export default {
         kratkiOpisP: this.kratkiOpisP,
       };
       axios.post("http://localhost:3000/detaljiPoslodavca", detaljiPoslodavca);
+      this.$router.go();
     },
+  },
+  async mounted() {
+    let uservrsta = JSON.parse(localStorage.getItem("korisnikData"));
+    let rezultat = await fetch(
+      "http://localhost:3000/detaljiPoslodavca?email=" + uservrsta.email
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        this.podatki = data;
+      });
   },
 };
 </script>

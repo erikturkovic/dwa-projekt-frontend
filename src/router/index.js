@@ -13,6 +13,11 @@ const routes = [
     component: HomeView,
   },
   {
+    path: '/ponuda/:_id',
+    name: 'ponuda',
+    props:true,
+  },
+  {
     path: '/login',
     name: 'Login',
     // route level code-splitting
