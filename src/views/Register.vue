@@ -29,7 +29,6 @@
             </div>
             <form class="container-fluid justify-content-start">
               <div>Ja sam: {{ selected }}</div>
-
               <select v-model="vrsta">
                 <option disabled value=null>
                   Odaberite "Student" ili "Poslodavac"

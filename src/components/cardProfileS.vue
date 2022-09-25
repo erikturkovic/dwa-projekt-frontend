@@ -13,7 +13,7 @@
                 class="form-control"
                 id="floatingPlaintextInput"
                 v-model="email"
-                value= uservrsta.vrsta
+                value="uservrsta.vrsta"
               />
               <label for="floatingPlaintextInput">E-mail : </label>
             </div>
@@ -150,5 +150,6 @@ export default {
       return false;
     },
   },
+
 };
 </script>

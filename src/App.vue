@@ -61,7 +61,7 @@ export default{
       Auth.logout();
       this.$router.go();
     }
-  }
+  },
 
 }
 </script>

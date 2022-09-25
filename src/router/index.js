@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/Ponude.vue'
-import cardProfileS from '@/components/cardProfileS.vue'
+import Profil from '../views/Profil.vue'
 import {Auth} from '@/services'
 
 Vue.use(VueRouter)
@@ -28,7 +28,7 @@ const routes = [
   {
     path: '/profil',
     name: 'Profil',
-    component: cardProfileS
+    component:  Profil
   },
 ]
 

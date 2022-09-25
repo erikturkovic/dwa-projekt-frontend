@@ -13,7 +13,6 @@
                 class="form-control"
                 id="floatingPlaintextInput"
                 v-model="email"
-                value= uservrsta.vrsta
               />
               <label for="floatingPlaintextInput">E-mail : </label>
             </div>
@@ -50,37 +49,12 @@
           </div>
           <div class="form-floating mb-4">
             <input
-              type="fakultet"
+              type="prezime"
               class="form-control"
               id="floatingPlaintextInput"
-              v-model="fakultet"
+              v-model="radimU"
             />
-            <label for="floatingPlaintextInput">Fakultet : </label>
-          </div>
-          <div class="form-floating mb-4">
-            <input
-              type="jmbag"
-              class="form-control"
-              id="floatingPlaintextInput"
-              v-model="jmbag"
-            />
-            <label for="floatingPlaintextInput">JMBAG : </label>
-          </div>
-          <div class="form-floating mb-4">
-            <select
-              class="form-select"
-              id="floatingSelect"
-              aria-label="Floating label select example"
-              v-model="godina"
-            >
-              <option selected>Open this select menu</option>
-              <option value="Prva preddiplomski">Prva preddiplomski</option>
-              <option value="Druga preddiplomski">Druga preddiplomski</option>
-              <option value="Treća preddiplomski">Treća preddiplomski</option>
-              <option value="Prva diplomski">Prva diplomski</option>
-              <option value="Druga diplomski">Druga diplomski</option>
-            </select>
-            <label for="floatingSelect">Godina</label>
+            <label for="floatingPlaintextInput">Radim u : </label>
           </div>
           <div class="form-floating">
             <textarea
@@ -88,21 +62,13 @@
               placeholder="Leave a comment here"
               id="floatingTextarea2"
               style="height: 100px"
-              v-model="kratkiOpis"
+              v-model="kratkiOpisP"
             ></textarea>
-            <label for="floatingTextarea2"
-              >Kratki opis (što me zanima) :
-            </label>
+            <label for="floatingTextarea2">Kratki opis : </label>
             <p></p>
           </div>
           <div class="form-floating mb-4">
-            <button
-              @click="unesiPodatkeStudenta"
-              type="submit"
-              class="btn btn-primary"
-            >
-              Unesi podatke
-            </button>
+            <button type="submit" class="btn btn-primary">Unesi podatke</button>
           </div>
         </div>
         <div class="col-sm"></div>
@@ -115,6 +81,7 @@
 import { Auth } from "@/services";
 import axios from "axios";
 
+
 export default {
   data() {
     return {
@@ -122,31 +89,24 @@ export default {
       vrsta: "",
       ime: "",
       prezime: "",
-      radimU:"",
-      kratkiOpis: "",
+      radimU: "",
+      kratkiOpisP: "",
     };
   },
   methods: {
-    unesiPodatkeStudenta() {
+    unesiPodatkePoslodavca() {
       let uservrsta = JSON.parse(localStorage.getItem("korisnikData"));
       let detaljiPoslodavca = {
         email: uservrsta.email,
         vrsta: uservrsta.vrsta,
         ime: this.ime,
         prezime: this.prezime,
-        fakultet: this.fakultet,
-        jmbag: this.jmbag,
-        godina: this.godina,
-        kratkiOpis: this.kratkiOpis,
+        radimU: this.radimU,
+        kratkiOpisP: this.kratkiOpisP,
       };
-      axios.post("http://localhost:3000/detaljiStudenta", detaljiPoslodavca);
-    },
-    provjeraVrste() {
-      if (uservrsta.vrsta == "Student") {
-        return true;
-      }
-      return false;
+      axios.post("http://localhost:3000/detaljiPoslodavca", detaljiPoslodavca);
     },
   },
+
 };
 </script>

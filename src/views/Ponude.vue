@@ -11,6 +11,7 @@ import cardPonuda from '@/components/cardPonuda.vue';
 export default {
   name: "Ponude",
   components: {
+    cardPonuda,
   },
 };
 </script>

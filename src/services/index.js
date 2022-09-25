@@ -1,5 +1,7 @@
 import axios from "axios";
 import $router from "@/router";
+import cardProfileS from "@/components/cardProfileS.vue";
+import cardProfileP from "@/components/cardProfileP.vue";
 
 let Service = axios.create({
   baseURL: "http://localhost:3000",
@@ -16,10 +18,11 @@ let Service = axios.create({
 //  else{
 //    request.headers("Authorization")="Bearer "+ token;
 
- // }
+// }
 
- // return request;
+// return request;
 //});
+
 
 let Auth = {
   async login(email, password) {
@@ -44,7 +47,13 @@ let Auth = {
       return korisnikData.token;
     }
   },
-
+  getVrsta() {
+    let korisnikData = Auth.getkorisnikData();
+    if (korisnikData.vrsta == "Student") {
+      return true;
+    }
+    return false;
+  },
   authenticated() {
     let korisnikData = Auth.getkorisnikData();
     if (korisnikData && korisnikData.token) {
@@ -60,4 +69,4 @@ let Auth = {
   },
 };
 
-export { Service, Auth };
+export { Service, Auth};
