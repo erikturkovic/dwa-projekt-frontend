@@ -1,5 +1,5 @@
 <template>
-  <div class="card text-bg-dark mb-3" style="width: 18rem">
+  <div class="card text-bg-dark mb-3" style="width: 22rem">
     <div class="card-body">
       <h5 class="card-title">
         <h5 class="card-title">{{ info.imePrakse }}</h5>

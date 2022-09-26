@@ -17,12 +17,13 @@
           <cardObjavaPonude />
         </div>
         <div class="col-sm" v-if="!provjeren">
-          <div class="card text-bg-dark mb-4" style="width: 18rem">
+          <div class="card text-bg-dark mb-4" style="width: 22rem">
             Moje ponude :
           </div>
           <div class="col-sm" v-if="!provjeren">
             <cardPonuda v-for="card in ponude" :key="card._id" :info="card" />
           </div>
+
         </div>
       </div>
     </div>

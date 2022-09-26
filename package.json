@@ -13,6 +13,7 @@
     "bootstrap": "^5.2.1",
     "core-js": "^3.8.3",
     "mongose": "^0.0.2-security",
+    "surge": "^0.23.1",
     "vue": "^2.6.14",
     "vue-router": "^3.6.5",
     "vue-table-component": "^1.9.2"
