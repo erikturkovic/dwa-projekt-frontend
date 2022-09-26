@@ -239,7 +239,7 @@
               v-if="!podatki[0]"
             ></textarea>
             <label v-if="!podatki[0]" for="floatingTextarea2"
-              >Kratki opis (što me zanima) :
+              >Kratki opis :
             </label>
             <p></p>
           </div>

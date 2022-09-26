@@ -38,6 +38,13 @@
       >
         Prijavi
       </button>
+      <button
+        type="submit"
+        v-on:click="izbrišiObjavu(info._id)"
+        class="btn btn-danger"
+      >
+        Izbriši
+      </button>
     </div>
   </div>
 </template>
@@ -48,7 +55,7 @@ import { Service } from "@/services";
 import { Auth } from "@/services";
 
 export default {
-  props: ["info"],
+  props: ["info", "sha"],
   name: "cardPonuda",
   data() {
     return {
@@ -74,12 +81,12 @@ export default {
         email: uservrsta.email,
         prijavljeno: new Date().toLocaleString(),
         idPonude: this.info._id,
+        imePrakse: this.info.imePrakse,
       };
       axios.post("http://localhost:3000/prijavljenePonude", prijavljenePonude);
       this.$router.go();
     },
   },
-  async mounted() {
-  },
+  async mounted() {},
 };
 </script>

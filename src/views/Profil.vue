@@ -6,6 +6,10 @@
         <div class="col-sm" v-if="provjeren">
           <cardProfileS />
         </div>
+        <div class="col-sm" v-if="provjeren">
+          <h3>PrijavljenePonude</h3>
+          <cardPrijavljene />
+        </div>
         <div class="col-sm" v-if="!provjeren">
           <cardProfileP />
         </div>
@@ -33,8 +37,10 @@ import cardProfileP from "@/components/cardProfileP.vue";
 import cardObjavaPonude from "@/components/cardObjavaPonude.vue";
 import cardPodaciP from "@/components/cardPodaciP.vue";
 import cardPonuda from "@/components/cardPonuda.vue";
+import cardPrijavljene from "@/components/cardPrijavljene.vue";
 
 export default {
+  props: ["info", "sha"],
   data() {
     return {
       ...Auth.state,
@@ -42,6 +48,7 @@ export default {
       Sam: "",
       test: "",
       ponude: [],
+      prijavljene: [],
     };
   },
   name: "Profil",
@@ -51,6 +58,7 @@ export default {
     cardObjavaPonude,
     cardPodaciP,
     cardPonuda,
+    cardPrijavljene,
   },
   methods: {},
   async mounted() {
