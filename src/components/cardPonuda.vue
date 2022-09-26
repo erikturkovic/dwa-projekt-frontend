@@ -32,7 +32,7 @@
       <button
         @click="prijaviPonudu"
         v-if="provjeren"
-        value= info._id
+        value="info._id"
         type="submit"
         class="btn btn-primary"
       >
@@ -64,6 +64,7 @@ export default {
       detaljniOpis: "",
       ponude: [],
       index: "",
+      prov: "",
     };
   },
   methods: {
@@ -77,9 +78,8 @@ export default {
       axios.post("http://localhost:3000/prijavljenePonude", prijavljenePonude);
       this.$router.go();
     },
-    async mounted() {
-      
-    }
+  },
+  async mounted() {
   },
 };
 </script>

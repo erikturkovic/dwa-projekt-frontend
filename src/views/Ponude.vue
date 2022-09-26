@@ -27,7 +27,8 @@ export default {
       detaljniOpis: "",
       ponude: [],
       index: "",
-      pretraga:null,
+      prov: [],
+      pretraga: null,
     };
   },
   name: "Ponude",
