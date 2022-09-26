@@ -5,7 +5,7 @@ import cardProfileP from "@/components/cardProfileP.vue";
 
 const Service = axios.create({
   baseURL: "http://localhost:3000",
-  timeout: 1000,
+  timeout: 10000,
 });
 
 //Service.interceptors.request.use((request) => {

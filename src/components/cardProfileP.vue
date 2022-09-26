@@ -87,7 +87,7 @@
               type="button"
               class="btn btn-success btn-sm"
             >
-              Small button
+              Update
             </button>
             <p></p>
             <input
@@ -99,7 +99,7 @@
               v-model="podatki[0].radimU"
             />
             <button v-if="podatki[0]" type="button" class="btn btn-success btn-sm">
-              Small button
+              Update
             </button>
             <p></p>
             <input
@@ -115,7 +115,7 @@
               type="button"
               class="btn btn-success btn-sm"
             >
-              Small button
+              Update
             </button>
             <p></p>
             <input
