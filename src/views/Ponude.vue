@@ -1,15 +1,19 @@
 <template>
   <div class="row">
+    <div class="search">
+      <input v-model="pretraga" type="text" placeholder="Pretraži" />
+      <p></p>
+    </div>
     <cardPonuda v-for="card in ponude" :key="card" :info="card" />
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import { TableComponent, TableColumn } from "vue-table-component";
 import cardPonuda from "@/components/cardPonuda.vue";
 
 export default {
+  props: ["info"],
   data: function () {
     return {
       email: "",
@@ -22,7 +26,8 @@ export default {
       tvrtka: "",
       detaljniOpis: "",
       ponude: [],
-      index:""
+      index: "",
+      pretraga:null,
     };
   },
   name: "Ponude",
