@@ -39,8 +39,9 @@
         Prijavi
       </button>
       <button
+        v-if="!provjeren && onPonuda"
         type="submit"
-        v-on:click="izbrišiObjavu(info._id)"
+        v-on:click="izbrisiObjavu(info._id)"
         class="btn btn-danger"
       >
         Izbriši
@@ -75,6 +76,12 @@ export default {
     };
   },
   methods: {
+    izbrisiObjavu(value) {
+      console.log(value);
+      let odg = { _id: value };
+      let res = axios.delete("http://localhost:3000/detaljiPonuda/" + value);
+      this.$router.go();
+    },
     prijaviPonudu() {
       let uservrsta = JSON.parse(localStorage.getItem("korisnikData"));
       let prijavljenePonude = {
@@ -85,6 +92,11 @@ export default {
       };
       axios.post("http://localhost:3000/prijavljenePonude", prijavljenePonude);
       this.$router.go();
+    },
+  },
+  computed: {
+    onPonuda() {
+      return this.$route.meta.onPonuda;
     },
   },
   async mounted() {},

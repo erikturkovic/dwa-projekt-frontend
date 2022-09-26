@@ -62,6 +62,8 @@ export default {
   },
   methods: {},
   async mounted() {
+    let help = true;
+
     let uservrsta = JSON.parse(localStorage.getItem("korisnikData"));
     let rezultat = await fetch(
       "http://localhost:3000/detaljiPonuda?objavio=" + uservrsta.email
@@ -73,6 +75,11 @@ export default {
         console.log(data);
         this.ponude = data;
       });
+  },
+  computed: {
+    onPonuda() {
+      return this.$route.meta.onPonuda;
+    },
   },
 };
 </script>

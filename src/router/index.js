@@ -31,6 +31,7 @@ const routes = [
   {
     path: "/profil",
     name: "Profil",
+    meta: {onPonuda: true},
     component: Profil,
   },
 ];

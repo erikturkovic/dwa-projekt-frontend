@@ -63,5 +63,10 @@ export default {
         this.prijavljene = data;
       });
   },
+    computed: {
+    showMeta() {
+      return this.$route.meta.onPOnuda;
+    },
+  },
 };
 </script>
