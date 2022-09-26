@@ -67,6 +67,7 @@
               v-model="podatki[0].ime"
             />
             <button
+              @click="updateIme"
               v-if="podatki[0]"
               type="button"
               class="btn btn-success btn-sm"
@@ -83,6 +84,7 @@
               v-model="podatki[0].prezime"
             />
             <button
+              @click="updatePrezime"
               v-if="podatki[0]"
               type="button"
               class="btn btn-success btn-sm"
@@ -98,7 +100,12 @@
               aria-label="readonly input example"
               v-model="podatki[0].radimU"
             />
-            <button v-if="podatki[0]" type="button" class="btn btn-success btn-sm">
+            <button
+              @click="updateRadimU"
+              v-if="podatki[0]"
+              type="button"
+              class="btn btn-success btn-sm"
+            >
               Update
             </button>
             <p></p>
@@ -111,6 +118,7 @@
               v-model="podatki[0].kratkiOpisP"
             />
             <button
+              @click="updateKratkiOpisP"
               v-if="podatki[0]"
               type="button"
               class="btn btn-success btn-sm"
@@ -193,10 +201,10 @@ export default {
     return {
       email: "",
       vrsta: "",
-      ime: "",
-      prezime: "",
-      radimU: "",
-      kratkiOpisP: "",
+      ime: "nedostaje ime",
+      prezime: "nedostaje prezime",
+      radimU: "nedostaje mjesto rada",
+      kratkiOpisP: "nedostaje kratki opis",
       podatki: [],
       imaPodatke: "",
     };
@@ -213,6 +221,38 @@ export default {
         kratkiOpisP: this.kratkiOpisP,
       };
       axios.post("http://localhost:3000/detaljiPoslodavca", detaljiPoslodavca);
+      this.$router.go();
+    },
+    updateIme() {
+      let odg = { ime: this.podatki[0].ime };
+      let res = axios.patch(
+        "http://localhost:3000/detaljiPoslodavca/" + this.podatki[0]._id,
+        odg
+      );
+      this.$router.go();
+    },
+    updatePrezime() {
+      let odg = { prezime: this.podatki[0].prezime };
+      let res = axios.patch(
+        "http://localhost:3000/detaljiPoslodavca/" + this.podatki[0]._id,
+        odg
+      );
+      this.$router.go();
+    },
+    updateRadimU() {
+      let odg = { radimU: this.podatki[0].radimU };
+      let res = axios.patch(
+        "http://localhost:3000/detaljiPoslodavca/" + this.podatki[0]._id,
+        odg
+      );
+      this.$router.go();
+    },
+    updateKratkiOpisP() {
+      let odg = { kratkiOpisP: this.podatki[0].kratkiOpisP };
+      let res = axios.patch(
+        "http://localhost:3000/detaljiPoslodavca/" + this.podatki[0]._id,
+        odg
+      );
       this.$router.go();
     },
   },

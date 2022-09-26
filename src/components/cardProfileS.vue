@@ -62,10 +62,10 @@
             type="email"
             value="Readonly input here..."
             aria-label="readonly input example"
-            readonly
             v-model="podatki[0].ime"
           />
           <button
+            @click="updateIme"
             v-if="podatki[0]"
             type="button"
             class="btn btn-primary btn-sm"
@@ -79,10 +79,10 @@
             type="email"
             value="Readonly input here..."
             aria-label="readonly input example"
-            readonly
             v-model="podatki[0].prezime"
           />
           <button
+            @click="updatePrezime"
             v-if="podatki[0]"
             type="button"
             class="btn btn-primary btn-sm"
@@ -96,10 +96,10 @@
             type="email"
             value="Readonly input here..."
             aria-label="readonly input example"
-            readonly
             v-model="podatki[0].fakultet"
           />
           <button
+            @click="updateFakultet"
             v-if="podatki[0]"
             type="button"
             class="btn btn-primary btn-sm"
@@ -113,10 +113,10 @@
             type="email"
             value="Readonly input here..."
             aria-label="readonly input example"
-            readonly
             v-model="podatki[0].jmbag"
           />
           <button
+            @click="updateJmbag"
             v-if="podatki[0]"
             type="button"
             class="btn btn-primary btn-sm"
@@ -124,16 +124,23 @@
             Update
           </button>
           <p></p>
-          <input
-            v-if="podatki[0]"
-            class="form-control"
-            type="email"
-            value="Readonly input here..."
-            aria-label="readonly input example"
-            readonly
-            v-model="podatki[0].godina"
-          />
+          <div v-if="podatki[0]" class="form-floating mb-4">
+            <select
+              class="form-select"
+              id="floatingSelect"
+              aria-label="Floating label select example"
+              v-model="godina"
+            >
+              <option value="Prva preddiplomski">Prva preddiplomski</option>
+              <option value="Druga preddiplomski">Druga preddiplomski</option>
+              <option value="Treća preddiplomski">Treća preddiplomski</option>
+              <option value="Prva diplomski">Prva diplomski</option>
+              <option value="Druga diplomski">Druga diplomski</option>
+            </select>
+            <label for="floatingSelect">{{ podatki[0].godina }}</label>
+          </div>
           <button
+            @click="updateGodina"
             v-if="podatki[0]"
             type="button"
             class="btn btn-primary btn-sm"
@@ -147,10 +154,10 @@
             type="email"
             value="Readonly input here..."
             aria-label="readonly input example"
-            readonly
             v-model="podatki[0].kratkiOpis"
           />
           <button
+            @click="updateOpis"
             v-if="podatki[0]"
             type="button"
             class="btn btn-primary btn-sm"
@@ -262,13 +269,13 @@ export default {
     return {
       email: "",
       vrsta: "",
-      ime: "",
-      prezime: "",
-      fakultet: "",
-      jmbag: "",
-      godina: "",
+      ime: "nedostaje ime",
+      prezime: "nedostaje prezime",
+      fakultet: "nedostaje fakultet",
+      jmbag: "nedostaje jmbag",
+      godina: "nedostaje godina",
       podatki: [],
-      kratkiOpis: "",
+      kratkiOpis: "nedostaje opis",
     };
   },
   methods: {
@@ -285,6 +292,54 @@ export default {
         kratkiOpis: this.kratkiOpis,
       };
       axios.post("http://localhost:3000/detaljiStudenta", detaljiStudenta);
+      this.$router.go();
+    },
+    updateOpis() {
+      let odg = { kratkiOpis: this.podatki[0].kratkiOpis };
+      let res = axios.patch(
+        "http://localhost:3000/detaljiStudenta/" + this.podatki[0]._id,
+        odg
+      );
+      this.$router.go();
+    },
+    updateGodina() {
+      let odg = { godina: this.godina };
+      let res = axios.patch(
+        "http://localhost:3000/detaljiStudenta/" + this.podatki[0]._id,
+        odg
+      );
+      this.$router.go();
+    },
+    updateJmbag() {
+      let odg = { jmbag: this.podatki[0].jmbag };
+      let res = axios.patch(
+        "http://localhost:3000/detaljiStudenta/" + this.podatki[0]._id,
+        odg
+      );
+      this.$router.go();
+    },
+    updateFakultet() {
+      let odg = { fakultet: this.podatki[0].fakultet };
+      let res = axios.patch(
+        "http://localhost:3000/detaljiStudenta/" + this.podatki[0]._id,
+        odg
+      );
+      this.$router.go();
+    },
+    updateIme() {
+      let odg = { ime: this.podatki[0].ime };
+      let res = axios.patch(
+        "http://localhost:3000/detaljiStudenta/" + this.podatki[0]._id,
+        odg
+      );
+      this.$router.go();
+    },
+    updatePrezime() {
+      let odg = { prezime: this.podatki[0].prezime };
+      let res = axios.patch(
+        "http://localhost:3000/detaljiStudenta/" + this.podatki[0]._id,
+        odg
+      );
       this.$router.go();
     },
   },

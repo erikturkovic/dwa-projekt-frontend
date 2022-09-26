@@ -13,10 +13,12 @@
           <cardObjavaPonude />
         </div>
         <div class="col-sm" v-if="!provjeren">
-            <div class="card text-bg-dark mb-4" style="width: 18rem">
-              Moje ponude :
-              </div>
-          <cardPonuda v-for="card in ponude" :key="card._id" :info="card" />
+          <div class="card text-bg-dark mb-4" style="width: 18rem">
+            Moje ponude :
+          </div>
+          <div class="col-sm" v-if="!provjeren">
+            <cardPonuda v-for="card in ponude" :key="card._id" :info="card" />
+          </div>
         </div>
       </div>
     </div>
@@ -39,7 +41,7 @@ export default {
       selected: "",
       Sam: "",
       test: "",
-      ponude:[]
+      ponude: [],
     };
   },
   name: "Profil",
@@ -53,7 +55,9 @@ export default {
   methods: {},
   async mounted() {
     let uservrsta = JSON.parse(localStorage.getItem("korisnikData"));
-    let rezultat = await fetch("http://localhost:3000/detaljiPonuda?objavio=" + uservrsta.email)
+    let rezultat = await fetch(
+      "http://localhost:3000/detaljiPonuda?objavio=" + uservrsta.email
+    )
       .then((response) => {
         return response.json();
       })
